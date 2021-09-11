@@ -1,12 +1,23 @@
-﻿using System;
+﻿using StackExchange.Redis;
+using System;
+using System.Threading.Tasks;
 
 namespace FunWithRedis
 {
     class Program
     {
-        static void Main(string[] args)
+        static readonly ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(
+            new ConfigurationOptions
+            {
+                EndPoints = { "localhost:6379" }
+            });
+
+        static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var db = redis.GetDatabase();
+            var pong = await db.PingAsync();
+            Console.WriteLine(pong);
+            Console.ReadLine();
         }
     }
 }
