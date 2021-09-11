@@ -1,6 +1,6 @@
 # Setup Redis in Docker
 
-##Offical Redis Docker Image
+## Offical Redis Docker Image
 
 [Docker](https://hub.docker.com/_/redis)
 ```Bash
